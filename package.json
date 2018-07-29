@@ -1,0 +1,24 @@
+{
+  "name": "planificador_node",
+  "bin": "app.js",
+  "pkg": {
+    "assets": [
+      "view/**/*"
+    ],
+    "targets": [
+      "node8"
+    ]
+  },
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "msexcel-builder": "0.0.2"
+  }
+}
