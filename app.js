@@ -1,5 +1,5 @@
 const fs = require('fs');
-const excelbuilder = require('msexcel-builder');
+const exBuilder = require('./excel-builder')
 
 // retorna um array de nomes de grd's
 let grd = async () => {
@@ -11,6 +11,7 @@ grd()
     .then(grd => {
         // array de grd's (nome das pastas)
         grd = grd.filter(isFolder)
+        console.log(grd)
         grd.forEach(getGrdFiles)
 
     })
@@ -26,6 +27,7 @@ function getGrdFiles(grd) {
         .then(files => {
             // array com todos os arquivos dwg de uma grd
             dwg = files.filter(isDwg)
+            console.log(dwg)
         })
 }
 
