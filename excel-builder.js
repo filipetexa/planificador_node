@@ -7,14 +7,14 @@ const sheet1 = workbook.createSheet('sheet1', 100, 120);
 
 // na outra pagina dwg.reduce(criaPlanilha)
 async function preencherPlanilha(linha, obj) {
-    for(let i in obj.dwg){
-        await sheet1.set(linha, 1, obj.grd);
-        await sheet1.set(linha, 2, obj.dwg[i]);
+    for (let i in obj.dwg) {
+        await sheet1.set(1, linha, obj.grd);
+        await sheet1.set(2, linha, obj.dwg[i]);
         linha++
-    }      
+    }
     return linha
 }
-function criaPlanilha(){
+function criaPlanilha() {
     // Save it
     workbook.save(function (ok) {
         if (!ok)

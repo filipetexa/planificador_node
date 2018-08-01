@@ -92,10 +92,26 @@ const exBuilder = require('./excel-builder')
 async function planificadora() {
   const files = await getFiles(__dirname);
   const folders = files.filter(isFolder);
-  const dwg = await getDwgInFolders(folders)
-  console.log(dwg[3])
+
+  //content = array de obj's com grd e seus dwgfiles
+  const content = await getDwgInFolders(folders);
+  const libera = await preenchedora(content);
+  if(libera){
+      exBuilder.criaPlanilha()
+      console.log("criando Planilha ");
+  }
 
 }
+
+async function preenchedora(content){
+    let linha = 1;
+    for(let obj of content){
+       linha = await exBuilder.preencherPlanilha(linha,obj)
+    }
+    return new Promise ((resolve, reject) => {
+      resolve(true)
+    })
+  }
 
 async function getDwgInFolders(folders) {
  let dwg = [];
