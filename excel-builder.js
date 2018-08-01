@@ -6,11 +6,12 @@ const workbook = excelbuilder.createWorkbook('./', 'sample.xlsx')
 const sheet1 = workbook.createSheet('sheet1', 100, 120);
 
 // na outra pagina dwg.reduce(criaPlanilha)
-function preencherPlanilha(linha, dwg) {
-    
-    sheet1.set(linha, 1, dwg.grd);
-    sheet1.set(linha, 2, dwg.value);
-    linha++
+async function preencherPlanilha(linha, obj) {
+    for(let i in obj.dwg){
+        await sheet1.set(linha, 1, obj.grd);
+        await sheet1.set(linha, 2, obj.dwg[i]);
+        linha++
+    }      
     return linha
 }
 function criaPlanilha(){
